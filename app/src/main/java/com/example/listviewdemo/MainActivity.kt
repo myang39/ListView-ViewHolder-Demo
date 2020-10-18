@@ -20,11 +20,10 @@ class MainActivity : AppCompatActivity() {
 
         val listView = findViewById<ListView>(R.id.main_listview)
 
-        listView.adapter = MyCustomerAdapter(this) // some kind of adapter
+        listView.adapter = MyCustomerAdapter() // some kind of adapter
     }
 
-    private class MyCustomerAdapter(context: Context) : BaseAdapter() {
-        private val myContext: Context = context
+    private class MyCustomerAdapter() : BaseAdapter() {
         private val names = arrayListOf<String>(
             "Donald Trump", "Steve Jobs", "Tim Cook", "Barack Obama", "Mark Zuckerberg",
             "Donald Trump", "Steve Jobs", "Tim Cook", "Barack Obama", "Mark Zuckerberg",
@@ -46,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
             val rowMain: View
             if (convertView == null) {
-                val layoutInflater = LayoutInflater.from(myContext)
+                val layoutInflater = LayoutInflater.from(parent!!.context)
                 rowMain = layoutInflater.inflate(R.layout.row_main, parent, false)
 
                 Log.d("Main", "calling findViewById, which is expensive")
